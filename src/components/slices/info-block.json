@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_slices_info_blocks",
+  "info": {
+    "displayName": "infoBlock",
+    "description": "",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "right"
+    },
+    "content": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.edito"
+    }
+  }
+}

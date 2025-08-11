@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_shared_buttons",
+  "info": {
+    "displayName": "button",
+    "icon": "play",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "accent",
+        "warn"
+      ],
+      "default": "primary"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.link"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "elevated",
+        "filled",
+        "filled_tonal",
+        "outlined",
+        "text",
+        "icon",
+        "segmented",
+        "fab",
+        "fab_extended"
+      ],
+      "default": "filled"
+    },
+    "icon": {
+      "type": "string"
+    }
+  }
+}

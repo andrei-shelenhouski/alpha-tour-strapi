@@ -48,6 +48,15 @@
           "localized": true
         }
       }
+    },
+    "country": {
+      "type": "customField",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "customField": "plugin::country-select.country"
     }
   }
 }

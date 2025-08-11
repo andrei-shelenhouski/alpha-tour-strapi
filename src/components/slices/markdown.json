@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_slices_markdowns",
+  "info": {
+    "displayName": "markdown",
+    "icon": "file"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

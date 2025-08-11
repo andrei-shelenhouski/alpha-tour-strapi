@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_global_navigations",
+  "info": {
+    "displayName": "navigation",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "panels": {
+      "type": "component",
+      "repeatable": true,
+      "component": "global.navigation-panel"
+    }
+  }
+}

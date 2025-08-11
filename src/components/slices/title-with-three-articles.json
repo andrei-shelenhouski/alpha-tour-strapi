@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_slices_title_with_three_articles",
+  "info": {
+    "displayName": "titleWithThreeArticles",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "articles": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.edito"
+    }
+  }
+}

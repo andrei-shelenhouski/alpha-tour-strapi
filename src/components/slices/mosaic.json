@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_slices_mosaics",
+  "info": {
+    "displayName": "mosaic"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "cards": {
+      "repeatable": true,
+      "type": "component",
+      "component": "shared.card"
+    }
+  }
+}

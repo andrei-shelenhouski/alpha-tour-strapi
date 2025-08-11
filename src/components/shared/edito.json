@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_editos",
+  "info": {
+    "displayName": "edito",
+    "icon": "feather",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "accent",
+        "warn"
+      ],
+      "default": "primary"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.button"
+    }
+  }
+}

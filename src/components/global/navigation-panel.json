@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_global_navigation_panels",
+  "info": {
+    "displayName": "navigationPanel",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "defalut": "folder"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.link"
+    },
+    "sections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "global.navigation-section"
+    },
+    "pushes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "global.navigation-push"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    }
+  }
+}
