@@ -16,6 +16,12 @@
     },
     "domain": {
       "type": "string"
+    },
+    "configs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::config.config",
+      "mappedBy": "project"
     }
   }
 }

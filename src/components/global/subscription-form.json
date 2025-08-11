@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_global_subscription_forms",
+  "info": {
+    "displayName": "subscriptionForm",
+    "icon": "paperPlane"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "disclaimer": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

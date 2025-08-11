@@ -66,6 +66,20 @@ export interface GlobalNavigationSection extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalSubscriptionForm extends Struct.ComponentSchema {
+  collectionName: 'components_global_subscription_forms';
+  info: {
+    displayName: 'subscriptionForm';
+    icon: 'paperPlane';
+  };
+  attributes: {
+    buttonText: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    disclaimer: Schema.Attribute.RichText;
+    heading: Schema.Attribute.String;
+  };
+}
+
 export interface SharedButton extends Struct.ComponentSchema {
   collectionName: 'components_shared_buttons';
   info: {
@@ -289,6 +303,7 @@ declare module '@strapi/strapi' {
       'global.navigation-panel': GlobalNavigationPanel;
       'global.navigation-push': GlobalNavigationPush;
       'global.navigation-section': GlobalNavigationSection;
+      'global.subscription-form': GlobalSubscriptionForm;
       'shared.button': SharedButton;
       'shared.card': SharedCard;
       'shared.edito': SharedEdito;
