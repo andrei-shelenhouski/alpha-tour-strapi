@@ -260,7 +260,7 @@
         }
       },
       "component": "shared.link",
-      "repeatable": true
+      "repeatable": false
     }
   }
 }

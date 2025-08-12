@@ -418,7 +418,7 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    associationLink: Schema.Attribute.Component<'shared.link', true> &
+    associationLink: Schema.Attribute.Component<'shared.link', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
