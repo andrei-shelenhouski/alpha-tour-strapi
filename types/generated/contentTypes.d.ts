@@ -560,6 +560,7 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     page: Schema.Attribute.Relation<'oneToOne', 'api::universal.universal'>;
     place: Schema.Attribute.Relation<'oneToOne', 'api::place.place'>;
+    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
     thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
@@ -635,6 +636,33 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTourTour extends Struct.CollectionTypeSchema {
+  collectionName: 'tours';
+  info: {
+    displayName: 'Tour';
+    pluralName: 'tours';
+    singularName: 'tour';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'> &
+      Schema.Attribute.Private;
+    page: Schema.Attribute.Relation<'oneToOne', 'api::universal.universal'>;
+    publishedAt: Schema.Attribute.DateTime;
+    thumbnail: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1226,6 +1254,7 @@ declare module '@strapi/strapi' {
       'api::hotel.hotel': ApiHotelHotel;
       'api::place.place': ApiPlacePlace;
       'api::project.project': ApiProjectProject;
+      'api::tour.tour': ApiTourTour;
       'api::universal.universal': ApiUniversalUniversal;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

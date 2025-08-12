@@ -78,6 +78,11 @@
     },
     "externalSource": {
       "type": "string"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project"
     }
   }
 }
