@@ -14,7 +14,7 @@
     "name": {
       "type": "string"
     },
-    "alug": {
+    "slug": {
       "type": "uid",
       "targetField": "name"
     },

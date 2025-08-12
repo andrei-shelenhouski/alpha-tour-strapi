@@ -542,7 +542,6 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    alug: Schema.Attribute.UID<'name'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -552,6 +551,7 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     page: Schema.Attribute.Relation<'oneToOne', 'api::universal.universal'>;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
