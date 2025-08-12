@@ -11,12 +11,12 @@
       "type": "string"
     },
     "disclaimer": {
-      "type": "string"
+      "type": "text"
     },
     "sections": {
       "type": "component",
-      "repeatable": true,
-      "component": "global.navigation-section"
+      "component": "global.navigation-section",
+      "repeatable": true
     }
   }
 }

@@ -9,7 +9,7 @@ export interface GlobalFooter extends Struct.ComponentSchema {
   };
   attributes: {
     copyright: Schema.Attribute.String;
-    disclaimer: Schema.Attribute.String;
+    disclaimer: Schema.Attribute.Text;
     sections: Schema.Attribute.Component<'global.navigation-section', true>;
   };
 }
