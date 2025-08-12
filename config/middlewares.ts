@@ -13,6 +13,7 @@ export default [
             "data:",
             "blob:",
             "market-assets.strapi.io",
+            "images.ctfassets.net",
             process.env.BUNNY_PULL_ZONE,
           ],
           "media-src": [
@@ -20,6 +21,7 @@ export default [
             "data:",
             "blob:",
             "market-assets.strapi.io",
+            "images.ctfassets.net",
             process.env.BUNNY_PULL_ZONE,
           ],
           upgradeInsecureRequests: null,
