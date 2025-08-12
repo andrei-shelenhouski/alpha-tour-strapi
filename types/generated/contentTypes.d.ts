@@ -418,6 +418,18 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    associationLink: Schema.Attribute.Component<'shared.link', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    associationLogo: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     company: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -481,6 +493,12 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
       }>;
     project: Schema.Attribute.Relation<'manyToOne', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
+    showAssociation: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     showFooterAddressBlock: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
