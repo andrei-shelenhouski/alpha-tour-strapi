@@ -28,10 +28,10 @@
       "type": "uid",
       "targetField": "title"
     },
-    "projects": {
+    "configs": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::project.project"
+      "target": "api::config.config"
     },
     "category": {
       "type": "relation",

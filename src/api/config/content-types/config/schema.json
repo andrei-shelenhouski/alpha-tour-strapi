@@ -15,11 +15,14 @@
     }
   },
   "attributes": {
-    "project": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::project.project",
-      "inversedBy": "configs"
+    "domain": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": "alphatour.by"
     },
     "navigation": {
       "type": "component",

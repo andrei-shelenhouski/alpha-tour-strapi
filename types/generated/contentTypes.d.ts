@@ -445,6 +445,13 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    domain: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'alphatour.by'>;
     facebookProfileLink: Schema.Attribute.Component<'shared.link', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -491,7 +498,6 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    project: Schema.Attribute.Relation<'manyToOne', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     showAssociation: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
@@ -578,7 +584,6 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     page: Schema.Attribute.Relation<'oneToOne', 'api::universal.universal'>;
     place: Schema.Attribute.Relation<'oneToOne', 'api::place.place'>;
-    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
     thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
@@ -631,36 +636,6 @@ export interface ApiPlacePlace extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiProjectProject extends Struct.CollectionTypeSchema {
-  collectionName: 'projects';
-  info: {
-    displayName: 'Project';
-    pluralName: 'projects';
-    singularName: 'project';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    configs: Schema.Attribute.Relation<'oneToMany', 'api::config.config'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    domain: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::project.project'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiTourTour extends Struct.CollectionTypeSchema {
   collectionName: 'tours';
   info: {
@@ -706,6 +681,7 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
+    configs: Schema.Attribute.Relation<'oneToMany', 'api::config.config'>;
     country: Schema.Attribute.String &
       Schema.Attribute.CustomField<'plugin::country-select.country'> &
       Schema.Attribute.SetPluginOptions<{
@@ -722,7 +698,6 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::universal.universal'
     >;
-    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false> &
       Schema.Attribute.SetPluginOptions<{
@@ -1271,7 +1246,6 @@ declare module '@strapi/strapi' {
       'api::config.config': ApiConfigConfig;
       'api::hotel.hotel': ApiHotelHotel;
       'api::place.place': ApiPlacePlace;
-      'api::project.project': ApiProjectProject;
       'api::tour.tour': ApiTourTour;
       'api::universal.universal': ApiUniversalUniversal;
       'plugin::content-releases.release': PluginContentReleasesRelease;
