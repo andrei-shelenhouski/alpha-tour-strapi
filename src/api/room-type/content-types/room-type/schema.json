@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "room_types",
+  "info": {
+    "singularName": "room-type",
+    "pluralName": "room-types",
+    "displayName": "Room Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
