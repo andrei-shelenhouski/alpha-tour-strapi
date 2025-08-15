@@ -7,10 +7,10 @@
   },
   "options": {},
   "attributes": {
-    "label": {
+    "title": {
       "type": "string"
     },
-    "title": {
+    "label": {
       "type": "string"
     },
     "text": {
@@ -25,11 +25,6 @@
         "warn"
       ]
     },
-    "buttons": {
-      "type": "component",
-      "component": "shared.button",
-      "repeatable": true
-    },
     "media": {
       "type": "media",
       "multiple": false,
@@ -39,6 +34,11 @@
         "videos",
         "audios"
       ]
+    },
+    "buttons": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": true
     }
   }
 }

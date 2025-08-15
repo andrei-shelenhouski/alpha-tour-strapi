@@ -7,6 +7,30 @@
   },
   "options": {},
   "attributes": {
+    "label": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "action"
+            },
+            "request-a-call"
+          ]
+        }
+      }
+    },
+    "icon": {
+      "type": "string"
+    },
+    "action": {
+      "type": "enumeration",
+      "default": "navigate",
+      "enum": [
+        "navigate",
+        "request-a-call"
+      ]
+    },
     "theme": {
       "type": "enumeration",
       "default": "primary",
@@ -15,21 +39,6 @@
         "accent",
         "warn"
       ]
-    },
-    "link": {
-      "type": "component",
-      "conditions": {
-        "visible": {
-          "!=": [
-            {
-              "var": "action"
-            },
-            "request-a-call"
-          ]
-        }
-      },
-      "component": "shared.link",
-      "repeatable": false
     },
     "type": {
       "type": "enumeration",
@@ -46,29 +55,20 @@
         "fab_extended"
       ]
     },
-    "icon": {
-      "type": "string"
-    },
-    "action": {
-      "type": "enumeration",
-      "default": "navigate",
-      "enum": [
-        "navigate",
-        "request-a-call"
-      ]
-    },
-    "label": {
-      "type": "string",
+    "link": {
+      "type": "component",
       "conditions": {
         "visible": {
-          "==": [
+          "!=": [
             {
               "var": "action"
             },
             "request-a-call"
           ]
         }
-      }
+      },
+      "component": "shared.link",
+      "repeatable": false
     }
   }
 }
