@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_slices_sliders",
+  "info": {
+    "displayName": "slider",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.edito"
+    }
+  },
+  "config": {}
+}

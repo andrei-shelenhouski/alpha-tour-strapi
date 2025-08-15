@@ -9,20 +9,31 @@
   "attributes": {
     "theme": {
       "type": "enumeration",
+      "default": "primary",
       "enum": [
         "primary",
         "accent",
         "warn"
-      ],
-      "default": "primary"
+      ]
     },
     "link": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.link"
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "action"
+            },
+            "request-a-call"
+          ]
+        }
+      },
+      "component": "shared.link",
+      "repeatable": false
     },
     "type": {
       "type": "enumeration",
+      "default": "filled",
       "enum": [
         "elevated",
         "filled",
@@ -33,11 +44,18 @@
         "segmented",
         "fab",
         "fab_extended"
-      ],
-      "default": "filled"
+      ]
     },
     "icon": {
       "type": "string"
+    },
+    "action": {
+      "type": "enumeration",
+      "default": "navigate",
+      "enum": [
+        "navigate",
+        "request-a-call"
+      ]
     }
   }
 }

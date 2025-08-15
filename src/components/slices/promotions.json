@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_slices_promotions",
+  "info": {
+    "displayName": "promotions",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "component",
+      "component": "shared.edito",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

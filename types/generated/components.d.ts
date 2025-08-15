@@ -88,6 +88,8 @@ export interface SharedButton extends Struct.ComponentSchema {
     icon: 'play';
   };
   attributes: {
+    action: Schema.Attribute.Enumeration<['navigate', 'request-a-call']> &
+      Schema.Attribute.DefaultTo<'navigate'>;
     icon: Schema.Attribute.String;
     link: Schema.Attribute.Component<'shared.link', false>;
     theme: Schema.Attribute.Enumeration<['primary', 'accent', 'warn']> &
@@ -220,6 +222,18 @@ export interface SharedSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface SlicesBestsellers extends Struct.ComponentSchema {
+  collectionName: 'components_slices_bestsellers';
+  info: {
+    displayName: 'bestsellers';
+    icon: 'dashboard';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<'shared.edito', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SlicesHero extends Struct.ComponentSchema {
   collectionName: 'components_slices_heroes';
   info: {
@@ -270,6 +284,18 @@ export interface SlicesMosaic extends Struct.ComponentSchema {
   };
 }
 
+export interface SlicesPromotions extends Struct.ComponentSchema {
+  collectionName: 'components_slices_promotions';
+  info: {
+    displayName: 'promotions';
+    icon: 'apps';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<'shared.edito', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SlicesRichText extends Struct.ComponentSchema {
   collectionName: 'components_shared_rich_texts';
   info: {
@@ -279,6 +305,18 @@ export interface SlicesRichText extends Struct.ComponentSchema {
   };
   attributes: {
     content: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SlicesSlider extends Struct.ComponentSchema {
+  collectionName: 'components_slices_sliders';
+  info: {
+    displayName: 'slider';
+    icon: 'stack';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<'shared.edito', true>;
     title: Schema.Attribute.String;
   };
 }
@@ -311,11 +349,14 @@ declare module '@strapi/strapi' {
       'shared.list-item': SharedListItem;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
+      'slices.bestsellers': SlicesBestsellers;
       'slices.hero': SlicesHero;
       'slices.info-block': SlicesInfoBlock;
       'slices.markdown': SlicesMarkdown;
       'slices.mosaic': SlicesMosaic;
+      'slices.promotions': SlicesPromotions;
       'slices.rich-text': SlicesRichText;
+      'slices.slider': SlicesSlider;
       'slices.title-with-three-articles': SlicesTitleWithThreeArticles;
     }
   }

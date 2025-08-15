@@ -1046,6 +1046,9 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
         'slices.mosaic',
         'slices.rich-text',
         'slices.info-block',
+        'slices.slider',
+        'slices.promotions',
+        'slices.bestsellers',
         'slices.markdown',
       ]
     > &

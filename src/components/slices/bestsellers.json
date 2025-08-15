@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_slices_bestsellers",
+  "info": {
+    "displayName": "bestsellers",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "component",
+      "component": "shared.edito",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
