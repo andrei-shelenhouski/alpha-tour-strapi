@@ -18,17 +18,27 @@
     },
     "theme": {
       "type": "enumeration",
+      "default": "primary",
       "enum": [
         "primary",
         "accent",
         "warn"
-      ],
-      "default": "primary"
+      ]
     },
     "buttons": {
       "type": "component",
-      "repeatable": true,
-      "component": "shared.button"
+      "component": "shared.button",
+      "repeatable": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

@@ -56,6 +56,19 @@
         "navigate",
         "request-a-call"
       ]
+    },
+    "label": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "action"
+            },
+            "request-a-call"
+          ]
+        }
+      }
     }
   }
 }

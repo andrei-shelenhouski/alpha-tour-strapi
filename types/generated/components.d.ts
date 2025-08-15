@@ -91,6 +91,7 @@ export interface SharedButton extends Struct.ComponentSchema {
     action: Schema.Attribute.Enumeration<['navigate', 'request-a-call']> &
       Schema.Attribute.DefaultTo<'navigate'>;
     icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
     link: Schema.Attribute.Component<'shared.link', false>;
     theme: Schema.Attribute.Enumeration<['primary', 'accent', 'warn']> &
       Schema.Attribute.DefaultTo<'primary'>;
@@ -135,6 +136,7 @@ export interface SharedEdito extends Struct.ComponentSchema {
   attributes: {
     buttons: Schema.Attribute.Component<'shared.button', true>;
     label: Schema.Attribute.String;
+    media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     text: Schema.Attribute.RichText;
     theme: Schema.Attribute.Enumeration<['primary', 'accent', 'warn']> &
       Schema.Attribute.DefaultTo<'primary'>;
