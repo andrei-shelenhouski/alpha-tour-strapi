@@ -1039,6 +1039,13 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    showCallRequestForm: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<true>;
     slices: Schema.Attribute.DynamicZone<
       [
         'slices.hero',
