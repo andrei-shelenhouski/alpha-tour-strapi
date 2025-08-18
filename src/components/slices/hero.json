@@ -7,16 +7,16 @@
   "options": {},
   "attributes": {
     "image": {
+      "type": "media",
+      "multiple": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "content": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.edito"
+      "component": "shared.edito",
+      "repeatable": false
     }
   }
 }
