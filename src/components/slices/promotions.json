@@ -9,9 +9,9 @@
     "title": {
       "type": "string"
     },
-    "content": {
+    "cards": {
       "type": "component",
-      "component": "shared.edito",
+      "component": "shared.card",
       "repeatable": true
     }
   },

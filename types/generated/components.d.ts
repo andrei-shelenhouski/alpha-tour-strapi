@@ -293,7 +293,7 @@ export interface SlicesPromotions extends Struct.ComponentSchema {
     icon: 'apps';
   };
   attributes: {
-    content: Schema.Attribute.Component<'shared.edito', true>;
+    cards: Schema.Attribute.Component<'shared.card', true>;
     title: Schema.Attribute.String;
   };
 }
