@@ -28,9 +28,9 @@
       "type": "uid",
       "targetField": "title"
     },
-    "configs": {
+    "config": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::config.config"
     },
     "category": {

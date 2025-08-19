@@ -1015,7 +1015,7 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
-    configs: Schema.Attribute.Relation<'oneToMany', 'api::config.config'>;
+    config: Schema.Attribute.Relation<'oneToOne', 'api::config.config'>;
     country: Schema.Attribute.String &
       Schema.Attribute.CustomField<'plugin::country-select.country'> &
       Schema.Attribute.SetPluginOptions<{
