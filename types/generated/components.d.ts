@@ -93,8 +93,8 @@ export interface SharedButton extends Struct.ComponentSchema {
     icon: Schema.Attribute.String;
     label: Schema.Attribute.String;
     link: Schema.Attribute.Component<'shared.link', false>;
-    theme: Schema.Attribute.Enumeration<['primary', 'accent', 'warn']> &
-      Schema.Attribute.DefaultTo<'primary'>;
+    theme: Schema.Attribute.Enumeration<['light', 'dark']> &
+      Schema.Attribute.DefaultTo<'light'>;
     type: Schema.Attribute.Enumeration<
       [
         'elevated',
@@ -138,8 +138,8 @@ export interface SharedEdito extends Struct.ComponentSchema {
     label: Schema.Attribute.String;
     media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     text: Schema.Attribute.RichText;
-    theme: Schema.Attribute.Enumeration<['primary', 'accent', 'warn']> &
-      Schema.Attribute.DefaultTo<'primary'>;
+    theme: Schema.Attribute.Enumeration<['light', 'dark']> &
+      Schema.Attribute.DefaultTo<'light'>;
     title: Schema.Attribute.String;
   };
 }
@@ -167,7 +167,10 @@ export interface SharedListItem extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.RichText;
     icon: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
     link: Schema.Attribute.Component<'shared.link', false>;
+    theme: Schema.Attribute.Enumeration<['light', 'dark']> &
+      Schema.Attribute.DefaultTo<'light'>;
     title: Schema.Attribute.String;
   };
 }
@@ -232,6 +235,18 @@ export interface SlicesBestsellers extends Struct.ComponentSchema {
   };
   attributes: {
     content: Schema.Attribute.Component<'shared.edito', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SlicesFlexibleBlocks extends Struct.ComponentSchema {
+  collectionName: 'components_slices_flexible_blocks';
+  info: {
+    displayName: 'flexibleBlocks';
+    icon: 'apps';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<'shared.list-item', true>;
     title: Schema.Attribute.String;
   };
 }
@@ -330,7 +345,14 @@ export interface SlicesTitleWithThreeArticles extends Struct.ComponentSchema {
     icon: 'chartBubble';
   };
   attributes: {
-    articles: Schema.Attribute.Component<'shared.edito', true>;
+    articles: Schema.Attribute.Component<'shared.edito', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3;
+          min: 3;
+        },
+        number
+      >;
     title: Schema.Attribute.String;
   };
 }
@@ -352,6 +374,7 @@ declare module '@strapi/strapi' {
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
       'slices.bestsellers': SlicesBestsellers;
+      'slices.flexible-blocks': SlicesFlexibleBlocks;
       'slices.hero': SlicesHero;
       'slices.info-block': SlicesInfoBlock;
       'slices.markdown': SlicesMarkdown;

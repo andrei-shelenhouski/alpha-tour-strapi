@@ -69,7 +69,8 @@
         "slices.slider",
         "slices.promotions",
         "slices.bestsellers",
-        "slices.markdown"
+        "slices.markdown",
+        "slices.flexible-blocks"
       ]
     },
     "seo": {

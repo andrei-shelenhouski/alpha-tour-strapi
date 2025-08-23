@@ -11,8 +11,10 @@
     },
     "articles": {
       "type": "component",
+      "component": "shared.edito",
       "repeatable": true,
-      "component": "shared.edito"
+      "min": 3,
+      "max": 3
     }
   }
 }

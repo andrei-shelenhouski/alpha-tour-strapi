@@ -33,11 +33,10 @@
     },
     "theme": {
       "type": "enumeration",
-      "default": "primary",
+      "default": "light",
       "enum": [
-        "primary",
-        "accent",
-        "warn"
+        "light",
+        "dark"
       ]
     },
     "type": {

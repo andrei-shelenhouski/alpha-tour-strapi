@@ -13,13 +13,28 @@
     "description": {
       "type": "richtext"
     },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "icon": {
       "type": "string"
     },
+    "theme": {
+      "type": "enumeration",
+      "default": "light",
+      "enum": [
+        "light",
+        "dark"
+      ]
+    },
     "link": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.link"
+      "component": "shared.link",
+      "repeatable": false
     }
   }
 }

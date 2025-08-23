@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_slices_flexible_blocks",
+  "info": {
+    "displayName": "flexibleBlocks",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "component",
+      "component": "shared.list-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
