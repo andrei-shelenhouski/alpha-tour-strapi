@@ -40,9 +40,9 @@
     },
     "hotel": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::hotel.hotel",
-      "mappedBy": "page"
+      "inversedBy": "pages"
     },
     "country": {
       "type": "customField",

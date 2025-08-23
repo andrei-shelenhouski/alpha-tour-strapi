@@ -701,7 +701,7 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     longitude: Schema.Attribute.String;
     name: Schema.Attribute.String;
-    page: Schema.Attribute.Relation<'oneToOne', 'api::universal.universal'>;
+    pages: Schema.Attribute.Relation<'oneToMany', 'api::universal.universal'>;
     place: Schema.Attribute.Relation<'oneToOne', 'api::place.place'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
@@ -1028,7 +1028,7 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hotel: Schema.Attribute.Relation<'oneToOne', 'api::hotel.hotel'>;
+    hotel: Schema.Attribute.Relation<'manyToOne', 'api::hotel.hotel'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

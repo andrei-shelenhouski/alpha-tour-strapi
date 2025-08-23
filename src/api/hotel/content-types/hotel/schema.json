@@ -18,11 +18,11 @@
       "type": "uid",
       "targetField": "name"
     },
-    "page": {
+    "pages": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::universal.universal",
-      "inversedBy": "hotel"
+      "mappedBy": "hotel"
     },
     "place": {
       "type": "relation",
