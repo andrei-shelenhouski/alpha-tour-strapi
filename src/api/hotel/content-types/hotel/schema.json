@@ -78,6 +78,10 @@
     },
     "externalSource": {
       "type": "string"
+    },
+    "country": {
+      "type": "customField",
+      "customField": "plugin::country-select.country"
     }
   }
 }
