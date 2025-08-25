@@ -14,6 +14,7 @@ export default [
             "blob:",
             "market-assets.strapi.io",
             "images.ctfassets.net",
+            "belavia.by",
             process.env.BUNNY_PULL_ZONE,
           ],
           "media-src": [
@@ -22,6 +23,7 @@ export default [
             "blob:",
             "market-assets.strapi.io",
             "images.ctfassets.net",
+            "belavia.by",
             process.env.BUNNY_PULL_ZONE,
           ],
           upgradeInsecureRequests: null,
