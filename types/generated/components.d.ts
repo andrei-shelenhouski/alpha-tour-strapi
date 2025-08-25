@@ -207,21 +207,11 @@ export interface SharedSeo extends Struct.ComponentSchema {
   attributes: {
     canonicalURL: Schema.Attribute.String;
     keywords: Schema.Attribute.Text;
-    metaDescription: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 160;
-        minLength: 50;
-      }>;
-    metaImage: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
-      Schema.Attribute.Required;
+    metaDescription: Schema.Attribute.String & Schema.Attribute.Required;
+    metaImage: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     metaRobots: Schema.Attribute.String;
     metaSocial: Schema.Attribute.Component<'shared.meta-social', true>;
-    metaTitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
+    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
     metaViewport: Schema.Attribute.String;
     structuredData: Schema.Attribute.JSON;
   };

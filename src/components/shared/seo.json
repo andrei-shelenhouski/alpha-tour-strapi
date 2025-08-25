@@ -7,20 +7,17 @@
   "options": {},
   "attributes": {
     "metaTitle": {
-      "required": true,
       "type": "string",
-      "maxLength": 60
+      "required": true
     },
     "metaDescription": {
       "type": "string",
-      "required": true,
-      "maxLength": 160,
-      "minLength": 50
+      "required": true
     },
     "metaImage": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
@@ -29,8 +26,8 @@
     },
     "metaSocial": {
       "type": "component",
-      "repeatable": true,
-      "component": "shared.meta-social"
+      "component": "shared.meta-social",
+      "repeatable": true
     },
     "keywords": {
       "type": "text",
