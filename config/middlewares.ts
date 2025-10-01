@@ -31,22 +31,7 @@ export default [
       },
     },
   },
-  {
-    name: "strapi::cors",
-    config: {
-      enabled: true,
-      headers: "*",
-      origin: [
-        "http://localhost:1337",
-        "http://localhost:3000",
-        "https://market-assets.strapi.io",
-        "https://images.ctfassets.net",
-        "https://belavia.by",
-        process.env.BUNNY_PULL_ZONE,
-      ],
-      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    },
-  },
+  "strapi::cors",
   "strapi::poweredBy",
   "strapi::query",
   "strapi::body",
