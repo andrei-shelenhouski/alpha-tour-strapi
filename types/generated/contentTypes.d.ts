@@ -389,6 +389,7 @@ export interface ApiAirportAirport extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    arrivals: Schema.Attribute.Relation<'oneToMany', 'api::flight.flight'>;
     code: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -405,6 +406,7 @@ export interface ApiAirportAirport extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    departures: Schema.Attribute.Relation<'oneToMany', 'api::flight.flight'>;
     description: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -767,6 +769,48 @@ export interface ApiDependentDependent extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFlightFlight extends Struct.CollectionTypeSchema {
+  collectionName: 'flights';
+  info: {
+    displayName: 'Flight';
+    pluralName: 'flights';
+    singularName: 'flight';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    arrival_airport: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::airport.airport'
+    >;
+    arrival_date: Schema.Attribute.Date;
+    arrival_time: Schema.Attribute.Time;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currency: Schema.Attribute.Relation<'oneToOne', 'api::currency.currency'>;
+    departure_airport: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::airport.airport'
+    >;
+    departure_date: Schema.Attribute.Date;
+    departure_time: Schema.Attribute.Time;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::flight.flight'
+    > &
+      Schema.Attribute.Private;
+    number: Schema.Attribute.String;
+    price: Schema.Attribute.Decimal;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
   collectionName: 'hotels';
   info: {
@@ -1088,33 +1132,6 @@ export interface ApiTourTypeTourType extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiTourTour extends Struct.CollectionTypeSchema {
-  collectionName: 'tours';
-  info: {
-    displayName: 'Tour';
-    pluralName: 'tours';
-    singularName: 'tour';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'> &
-      Schema.Attribute.Private;
-    page: Schema.Attribute.Relation<'oneToOne', 'api::universal.universal'>;
-    publishedAt: Schema.Attribute.DateTime;
-    thumbnail: Schema.Attribute.Media<'images'>;
-    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1762,6 +1779,7 @@ declare module '@strapi/strapi' {
       'api::contract.contract': ApiContractContract;
       'api::currency.currency': ApiCurrencyCurrency;
       'api::dependent.dependent': ApiDependentDependent;
+      'api::flight.flight': ApiFlightFlight;
       'api::hotel.hotel': ApiHotelHotel;
       'api::lead.lead': ApiLeadLead;
       'api::meal-type.meal-type': ApiMealTypeMealType;
@@ -1770,7 +1788,6 @@ declare module '@strapi/strapi' {
       'api::room-category.room-category': ApiRoomCategoryRoomCategory;
       'api::room-type.room-type': ApiRoomTypeRoomType;
       'api::tour-type.tour-type': ApiTourTypeTourType;
-      'api::tour.tour': ApiTourTour;
       'api::transport-type.transport-type': ApiTransportTypeTransportType;
       'api::universal.universal': ApiUniversalUniversal;
       'plugin::content-releases.release': PluginContentReleasesRelease;
