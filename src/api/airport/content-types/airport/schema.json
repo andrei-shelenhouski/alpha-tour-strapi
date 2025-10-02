@@ -56,6 +56,18 @@
         }
       },
       "customField": "plugin::country-select.country"
+    },
+    "departures": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::flight.flight",
+      "mappedBy": "departure_airport"
+    },
+    "arrivals": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::flight.flight",
+      "mappedBy": "arrival_airport"
     }
   }
 }

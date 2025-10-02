@@ -91,6 +91,12 @@
         }
       },
       "default": true
+    },
+    "tours": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour.tour",
+      "mappedBy": "page"
     }
   }
 }

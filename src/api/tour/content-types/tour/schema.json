@@ -9,22 +9,191 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "country": {
+      "type": "customField",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "customField": "plugin::country-select.country"
+    },
+    "place": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::place.place",
+      "inversedBy": "tours"
+    },
+    "transport_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::transport-type.transport-type"
     },
     "page": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::universal.universal"
+      "relation": "manyToOne",
+      "target": "api::universal.universal",
+      "inversedBy": "tours"
     },
-    "thumbnail": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
+    "departure_airport": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::airport.airport"
+    },
+    "meal_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::meal-type.meal-type"
+    },
+    "room_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::room-type.room-type"
+    },
+    "adults": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "children": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "price": {
+      "type": "decimal",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "currency": {
+      "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "BYN",
+      "enum": [
+        "PLN",
+        "EUR",
+        "USD",
+        "BYN",
+        "GEL"
       ]
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "maxLength": 1000
+    },
+    "note": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "maxLength": 200
+    },
+    "internal_ref": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "exchange_rate_multiplier": {
+      "type": "decimal",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": 3
+    },
+    "duration": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": 0
+    },
+    "start_date": {
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "end_date": {
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "effective_date": {
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "expiry_date": {
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "service_note": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "maxLength": 200
+    },
+    "config": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::config.config",
+      "inversedBy": "tours"
     }
   }
 }

@@ -389,6 +389,7 @@ export interface ApiAirportAirport extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    arrivals: Schema.Attribute.Relation<'oneToMany', 'api::flight.flight'>;
     code: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -405,6 +406,7 @@ export interface ApiAirportAirport extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    departures: Schema.Attribute.Relation<'oneToMany', 'api::flight.flight'>;
     description: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -638,6 +640,7 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    tours: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -761,6 +764,48 @@ export interface ApiDependentDependent extends Struct.CollectionTypeSchema {
     person: Schema.Attribute.Relation<'manyToOne', 'api::person.person'>;
     publishedAt: Schema.Attribute.DateTime;
     type: Schema.Attribute.Enumeration<['spouse', 'child', 'other']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFlightFlight extends Struct.CollectionTypeSchema {
+  collectionName: 'flights';
+  info: {
+    displayName: 'Flight';
+    pluralName: 'flights';
+    singularName: 'flight';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    arrival_airport: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::airport.airport'
+    >;
+    arrival_date: Schema.Attribute.Date;
+    arrival_time: Schema.Attribute.Time;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currency: Schema.Attribute.Relation<'oneToOne', 'api::currency.currency'>;
+    departure_airport: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::airport.airport'
+    >;
+    departure_date: Schema.Attribute.Date;
+    departure_time: Schema.Attribute.Time;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::flight.flight'
+    > &
+      Schema.Attribute.Private;
+    number: Schema.Attribute.String;
+    price: Schema.Attribute.Decimal;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -958,6 +1003,7 @@ export interface ApiPlacePlace extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    tours: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1104,17 +1150,148 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
+    adults: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    children: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    config: Schema.Attribute.Relation<'manyToOne', 'api::config.config'>;
+    country: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::country-select.country'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'> &
-      Schema.Attribute.Private;
-    page: Schema.Attribute.Relation<'oneToOne', 'api::universal.universal'>;
+    currency: Schema.Attribute.Enumeration<
+      ['PLN', 'EUR', 'USD', 'BYN', 'GEL']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'BYN'>;
+    departure_airport: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::airport.airport'
+    >;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 1000;
+      }>;
+    duration: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<0>;
+    effective_date: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    end_date: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    exchange_rate_multiplier: Schema.Attribute.Decimal &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<3>;
+    expiry_date: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    internal_ref: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'>;
+    meal_type: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::meal-type.meal-type'
+    >;
+    note: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
+    page: Schema.Attribute.Relation<'manyToOne', 'api::universal.universal'>;
+    place: Schema.Attribute.Relation<'manyToOne', 'api::place.place'>;
+    price: Schema.Attribute.Decimal &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    thumbnail: Schema.Attribute.Media<'images'>;
-    title: Schema.Attribute.String;
+    room_type: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::room-type.room-type'
+    >;
+    service_note: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
+    start_date: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    transport_type: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::transport-type.transport-type'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1240,6 +1417,7 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    tours: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1762,6 +1940,7 @@ declare module '@strapi/strapi' {
       'api::contract.contract': ApiContractContract;
       'api::currency.currency': ApiCurrencyCurrency;
       'api::dependent.dependent': ApiDependentDependent;
+      'api::flight.flight': ApiFlightFlight;
       'api::hotel.hotel': ApiHotelHotel;
       'api::lead.lead': ApiLeadLead;
       'api::meal-type.meal-type': ApiMealTypeMealType;

@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "flights",
+  "info": {
+    "singularName": "flight",
+    "pluralName": "flights",
+    "displayName": "Flight"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "departure_airport": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::airport.airport",
+      "inversedBy": "departures"
+    },
+    "arrival_airport": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::airport.airport",
+      "inversedBy": "arrivals"
+    },
+    "departure_date": {
+      "type": "date"
+    },
+    "departure_time": {
+      "type": "time"
+    },
+    "arrival_date": {
+      "type": "date"
+    },
+    "arrival_time": {
+      "type": "time"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::currency.currency"
+    }
+  }
+}
