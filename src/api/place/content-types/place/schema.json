@@ -31,6 +31,12 @@
         }
       },
       "customField": "plugin::country-select.country"
+    },
+    "tours": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour.tour",
+      "mappedBy": "place"
     }
   }
 }

@@ -264,6 +264,12 @@
       },
       "component": "shared.link",
       "repeatable": false
+    },
+    "tours": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour.tour",
+      "mappedBy": "config"
     }
   }
 }
