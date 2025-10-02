@@ -27,7 +27,7 @@
       "type": "customField",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "customField": "plugin::country-select.country"
@@ -68,7 +68,7 @@
       "type": "integer",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -76,7 +76,7 @@
       "type": "integer",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -84,7 +84,7 @@
       "type": "decimal",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -92,7 +92,7 @@
       "type": "enumeration",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "default": "BYN",
@@ -126,7 +126,7 @@
       "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -134,7 +134,7 @@
       "type": "decimal",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "default": 3
@@ -143,7 +143,7 @@
       "type": "integer",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "default": 0
@@ -152,7 +152,7 @@
       "type": "date",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -160,7 +160,7 @@
       "type": "date",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -168,7 +168,7 @@
       "type": "date",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -176,7 +176,7 @@
       "type": "date",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -199,6 +199,18 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::room-category.room-category"
+    },
+    "thumbnail": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
