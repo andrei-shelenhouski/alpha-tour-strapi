@@ -1159,13 +1159,13 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     adults: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     children: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     config: Schema.Attribute.Relation<'manyToOne', 'api::config.config'>;
@@ -1173,7 +1173,7 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
       Schema.Attribute.CustomField<'plugin::country-select.country'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Schema.Attribute.DateTime;
@@ -1184,7 +1184,7 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }> &
       Schema.Attribute.DefaultTo<'BYN'>;
@@ -1204,39 +1204,39 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     duration: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }> &
       Schema.Attribute.DefaultTo<0>;
     effective_date: Schema.Attribute.Date &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     end_date: Schema.Attribute.Date &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     exchange_rate_multiplier: Schema.Attribute.Decimal &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }> &
       Schema.Attribute.DefaultTo<3>;
     expiry_date: Schema.Attribute.Date &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     internal_ref: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     locale: Schema.Attribute.String;
@@ -1259,7 +1259,7 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Decimal &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
@@ -1283,7 +1283,13 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     start_date: Schema.Attribute.Date &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
+        };
+      }>;
+    thumbnail: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     title: Schema.Attribute.String &
