@@ -194,6 +194,11 @@
       "relation": "manyToOne",
       "target": "api::config.config",
       "inversedBy": "tours"
+    },
+    "room_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::room-category.room-category"
     }
   }
 }

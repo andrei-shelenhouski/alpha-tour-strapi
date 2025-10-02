@@ -1263,6 +1263,10 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    room_category: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::room-category.room-category'
+    >;
     room_type: Schema.Attribute.Relation<
       'oneToOne',
       'api::room-type.room-type'
