@@ -182,6 +182,7 @@
     },
     "service_note": {
       "type": "text",
+      "private": true,
       "pluginOptions": {
         "i18n": {
           "localized": true

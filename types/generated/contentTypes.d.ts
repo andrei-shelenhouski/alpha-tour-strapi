@@ -1272,6 +1272,7 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
       'api::room-type.room-type'
     >;
     service_note: Schema.Attribute.Text &
+      Schema.Attribute.Private &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
