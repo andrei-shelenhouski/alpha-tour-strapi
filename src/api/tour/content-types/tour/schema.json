@@ -212,6 +212,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "provider": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::provider.provider",
+      "private": true
     }
   }
 }

@@ -466,40 +466,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
-  collectionName: 'companies';
-  info: {
-    displayName: 'Company';
-    pluralName: 'companies';
-    singularName: 'company';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    cin: Schema.Attribute.String;
-    contracts: Schema.Attribute.Relation<'oneToMany', 'api::contract.contract'>;
-    country: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::country-select.country'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    leads: Schema.Attribute.Relation<'oneToMany', 'api::lead.lead'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::company.company'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    people: Schema.Attribute.Relation<'manyToMany', 'api::person.person'>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
   collectionName: 'configs';
   info: {
@@ -654,37 +620,6 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContractContract extends Struct.CollectionTypeSchema {
-  collectionName: 'contracts';
-  info: {
-    displayName: 'Contract';
-    pluralName: 'contracts';
-    singularName: 'contract';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    company: Schema.Attribute.Relation<'manyToOne', 'api::company.company'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    endDate: Schema.Attribute.Date;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::contract.contract'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    startDate: Schema.Attribute.Date;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCurrencyCurrency extends Struct.CollectionTypeSchema {
   collectionName: 'currencies';
   info: {
@@ -734,36 +669,6 @@ export interface ApiCurrencyCurrency extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiDependentDependent extends Struct.CollectionTypeSchema {
-  collectionName: 'dependents';
-  info: {
-    displayName: 'Dependent';
-    pluralName: 'dependents';
-    singularName: 'dependent';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::dependent.dependent'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    person: Schema.Attribute.Relation<'manyToOne', 'api::person.person'>;
-    publishedAt: Schema.Attribute.DateTime;
-    type: Schema.Attribute.Enumeration<['spouse', 'child', 'other']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -854,41 +759,6 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiLeadLead extends Struct.CollectionTypeSchema {
-  collectionName: 'leads';
-  info: {
-    displayName: 'Lead';
-    pluralName: 'leads';
-    singularName: 'lead';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    company: Schema.Attribute.Relation<'manyToOne', 'api::company.company'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    currency: Schema.Attribute.Relation<'oneToOne', 'api::currency.currency'>;
-    description: Schema.Attribute.Text;
-    direction: Schema.Attribute.String &
-      Schema.Attribute.CustomField<'plugin::country-select.country'>;
-    endDate: Schema.Attribute.Date;
-    hotel: Schema.Attribute.Relation<'oneToOne', 'api::hotel.hotel'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::lead.lead'> &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    person: Schema.Attribute.Relation<'manyToOne', 'api::person.person'>;
-    publishedAt: Schema.Attribute.DateTime;
-    startDate: Schema.Attribute.Date;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    value: Schema.Attribute.Decimal;
-  };
-}
-
 export interface ApiMealTypeMealType extends Struct.CollectionTypeSchema {
   collectionName: 'meal_types';
   info: {
@@ -925,42 +795,6 @@ export interface ApiMealTypeMealType extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiPersonPerson extends Struct.CollectionTypeSchema {
-  collectionName: 'people';
-  info: {
-    displayName: 'Person';
-    pluralName: 'people';
-    singularName: 'person';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    companies: Schema.Attribute.Relation<'manyToMany', 'api::company.company'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    dependents: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::dependent.dependent'
-    >;
-    email: Schema.Attribute.Email;
-    leads: Schema.Attribute.Relation<'oneToMany', 'api::lead.lead'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::person.person'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
-    phoneNumber: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1007,6 +841,37 @@ export interface ApiPlacePlace extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
+  collectionName: 'providers';
+  info: {
+    displayName: 'Provider';
+    pluralName: 'providers';
+    singularName: 'provider';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    country: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::country-select.country'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::provider.provider'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    webSite: Schema.Attribute.String;
   };
 }
 
@@ -1262,6 +1127,8 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    provider: Schema.Attribute.Relation<'oneToOne', 'api::provider.provider'> &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     room_category: Schema.Attribute.Relation<
       'oneToOne',
@@ -1952,17 +1819,13 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::airport.airport': ApiAirportAirport;
       'api::category.category': ApiCategoryCategory;
-      'api::company.company': ApiCompanyCompany;
       'api::config.config': ApiConfigConfig;
-      'api::contract.contract': ApiContractContract;
       'api::currency.currency': ApiCurrencyCurrency;
-      'api::dependent.dependent': ApiDependentDependent;
       'api::flight.flight': ApiFlightFlight;
       'api::hotel.hotel': ApiHotelHotel;
-      'api::lead.lead': ApiLeadLead;
       'api::meal-type.meal-type': ApiMealTypeMealType;
-      'api::person.person': ApiPersonPerson;
       'api::place.place': ApiPlacePlace;
+      'api::provider.provider': ApiProviderProvider;
       'api::room-category.room-category': ApiRoomCategoryRoomCategory;
       'api::room-type.room-type': ApiRoomTypeRoomType;
       'api::tour-type.tour-type': ApiTourTypeTourType;
