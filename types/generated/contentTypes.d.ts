@@ -702,6 +702,7 @@ export interface ApiFlightFlight extends Struct.CollectionTypeSchema {
     >;
     departure_date: Schema.Attribute.Date;
     departure_time: Schema.Attribute.Time;
+    is_charter_flight: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

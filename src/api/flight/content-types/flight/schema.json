@@ -45,6 +45,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::currency.currency"
+    },
+    "is_charter_flight": {
+      "type": "boolean"
     }
   }
 }
