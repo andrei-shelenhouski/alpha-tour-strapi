@@ -740,6 +740,7 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
     externalSource: Schema.Attribute.String;
     gallery: Schema.Attribute.Media<'images', true>;
     isAdultsOnly: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    isDelux: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     latitude: Schema.Attribute.String;
     level: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
