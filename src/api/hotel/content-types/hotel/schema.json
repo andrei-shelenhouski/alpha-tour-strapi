@@ -70,6 +70,11 @@
       "type": "boolean",
       "default": false
     },
+    "isDelux": {
+      "type": "boolean",
+      "required": false,
+      "default": false
+    },
     "contentfulSlug": {
       "type": "string"
     },
