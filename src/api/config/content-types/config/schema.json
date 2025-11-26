@@ -270,6 +270,12 @@
       "relation": "oneToMany",
       "target": "api::tour.tour",
       "mappedBy": "config"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post",
+      "mappedBy": "configs"
     }
   }
 }
