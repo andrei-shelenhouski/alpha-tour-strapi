@@ -97,6 +97,12 @@
       "relation": "oneToMany",
       "target": "api::tour.tour",
       "mappedBy": "page"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "page"
     }
   }
 }

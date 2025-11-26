@@ -619,6 +619,7 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    posts: Schema.Attribute.Relation<'manyToMany', 'api::post.post'>;
     publishedAt: Schema.Attribute.DateTime;
     showAssociation: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
@@ -807,6 +808,7 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     pages: Schema.Attribute.Relation<'oneToMany', 'api::universal.universal'>;
     place: Schema.Attribute.Relation<'oneToOne', 'api::place.place'>;
+    posts: Schema.Attribute.Relation<'oneToMany', 'api::post.post'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
     thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
@@ -897,6 +899,42 @@ export interface ApiPlacePlace extends Struct.CollectionTypeSchema {
       }>;
     publishedAt: Schema.Attribute.DateTime;
     tours: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPostPost extends Struct.CollectionTypeSchema {
+  collectionName: 'posts';
+  info: {
+    displayName: 'Post';
+    pluralName: 'posts';
+    singularName: 'post';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    configs: Schema.Attribute.Relation<'manyToMany', 'api::config.config'>;
+    content: Schema.Attribute.RichText;
+    country: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::country-select.country'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hotel: Schema.Attribute.Relation<'manyToOne', 'api::hotel.hotel'>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'>;
+    page: Schema.Attribute.Relation<'manyToOne', 'api::universal.universal'>;
+    publishedAt: Schema.Attribute.DateTime;
+    thumbnail: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1320,6 +1358,7 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::universal.universal'
     >;
+    posts: Schema.Attribute.Relation<'oneToMany', 'api::post.post'>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false> &
       Schema.Attribute.SetPluginOptions<{
@@ -1885,6 +1924,7 @@ declare module '@strapi/strapi' {
       'api::hotel.hotel': ApiHotelHotel;
       'api::meal-type.meal-type': ApiMealTypeMealType;
       'api::place.place': ApiPlacePlace;
+      'api::post.post': ApiPostPost;
       'api::provider.provider': ApiProviderProvider;
       'api::room-category.room-category': ApiRoomCategoryRoomCategory;
       'api::room-type.room-type': ApiRoomTypeRoomType;

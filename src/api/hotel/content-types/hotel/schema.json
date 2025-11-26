@@ -87,6 +87,12 @@
     "country": {
       "type": "customField",
       "customField": "plugin::country-select.country"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "hotel"
     }
   }
 }
