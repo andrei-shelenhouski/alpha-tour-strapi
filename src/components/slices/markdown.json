@@ -11,6 +11,10 @@
     },
     "content": {
       "type": "richtext"
+    },
+    "withAside": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

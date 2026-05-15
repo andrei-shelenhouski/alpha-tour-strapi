@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_slices_tourvisors",
+  "info": {
+    "displayName": "tourvisor",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "class": {
+      "type": "string",
+      "required": false
+    },
+    "moduleId": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}
