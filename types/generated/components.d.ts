@@ -277,6 +277,7 @@ export interface SlicesMarkdown extends Struct.ComponentSchema {
   attributes: {
     content: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
+    withAside: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -347,6 +348,19 @@ export interface SlicesTitleWithThreeArticles extends Struct.ComponentSchema {
   };
 }
 
+export interface SlicesTourvisor extends Struct.ComponentSchema {
+  collectionName: 'components_slices_tourvisors';
+  info: {
+    displayName: 'tourvisor';
+    icon: 'code';
+  };
+  attributes: {
+    class: Schema.Attribute.String;
+    moduleId: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -373,6 +387,7 @@ declare module '@strapi/strapi' {
       'slices.rich-text': SlicesRichText;
       'slices.slider': SlicesSlider;
       'slices.title-with-three-articles': SlicesTitleWithThreeArticles;
+      'slices.tourvisor': SlicesTourvisor;
     }
   }
 }
