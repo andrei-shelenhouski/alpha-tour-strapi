@@ -249,6 +249,7 @@ export interface AdminSession extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'admin::session'> &
       Schema.Attribute.Private;
+    metadata: Schema.Attribute.JSON & Schema.Attribute.Private;
     origin: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Private;
@@ -1069,6 +1070,55 @@ export interface ApiRoomTypeRoomType extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTourScheduleTourSchedule
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'tour_schedules';
+  info: {
+    displayName: 'Tour Schedule';
+    pluralName: 'tour-schedules';
+    singularName: 'tour-schedule';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currency: Schema.Attribute.Enumeration<
+      ['PLN', 'EUR', 'USD', 'BYN', 'GEL']
+    > &
+      Schema.Attribute.DefaultTo<'BYN'>;
+    date: Schema.Attribute.Date;
+    day_1: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    day_2: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    day_3: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    day_4: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    day_5: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    day_6: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    day_7: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    effective_date: Schema.Attribute.Date;
+    expiry_date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tour-schedule.tour-schedule'
+    > &
+      Schema.Attribute.Private;
+    page: Schema.Attribute.Relation<'manyToOne', 'api::universal.universal'>;
+    price: Schema.Attribute.Decimal;
+    publishedAt: Schema.Attribute.DateTime;
+    schedule_type: Schema.Attribute.Enumeration<
+      ['fixed_date', 'weekly', 'on_request']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'fixed_date'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTourTypeTourType extends Struct.CollectionTypeSchema {
   collectionName: 'tour_types';
   info: {
@@ -1370,6 +1420,10 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
     >;
     posts: Schema.Attribute.Relation<'oneToMany', 'api::post.post'>;
     publishedAt: Schema.Attribute.DateTime;
+    schedules: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tour-schedule.tour-schedule'
+    >;
     seo: Schema.Attribute.Component<'shared.seo', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1918,7 +1972,7 @@ export interface PluginUsersPermissionsUser
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ContentTypeSchemas {
       'admin::api-token': AdminApiToken;
       'admin::api-token-permission': AdminApiTokenPermission;
@@ -1940,6 +1994,7 @@ declare module '@strapi/strapi' {
       'api::provider.provider': ApiProviderProvider;
       'api::room-category.room-category': ApiRoomCategoryRoomCategory;
       'api::room-type.room-type': ApiRoomTypeRoomType;
+      'api::tour-schedule.tour-schedule': ApiTourScheduleTourSchedule;
       'api::tour-type.tour-type': ApiTourTypeTourType;
       'api::tour.tour': ApiTourTour;
       'api::transport-type.transport-type': ApiTransportTypeTransportType;
