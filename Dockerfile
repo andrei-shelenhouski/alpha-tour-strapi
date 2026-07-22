@@ -1,12 +1,14 @@
 # Creating multi-stage build for production
 FROM node:22-alpine as build
-RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev > /dev/null 2>&1
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev > /dev/null 2>&1
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /opt/
 COPY package.json package-lock.json ./
-RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install --only=production
+RUN NPM_ARCH=$(uname -m | sed 's/x86_64/x64/;s/aarch64/arm64/') && \
+    npm config set fetch-retry-maxtimeout 600000 -g && \
+    npm install --omit=dev --os=linux --libc=musl --cpu=${NPM_ARCH}
 ENV PATH /opt/node_modules/.bin:$PATH
 WORKDIR /opt/app
 COPY . .
