@@ -1,0 +1,162 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_schedules",
+  "info": {
+    "singularName": "tour-schedule",
+    "pluralName": "tour-schedules",
+    "displayName": "Tour Schedule"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "page": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::universal.universal",
+      "inversedBy": "schedules"
+    },
+    "schedule_type": {
+      "type": "enumeration",
+      "required": true,
+      "default": "fixed_date",
+      "enum": [
+        "fixed_date",
+        "weekly",
+        "on_request"
+      ]
+    },
+    "date": {
+      "type": "date",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "schedule_type"
+            },
+            "fixed_date"
+          ]
+        }
+      }
+    },
+    "day_1": {
+      "type": "boolean",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "schedule_type"
+            },
+            "weekly"
+          ]
+        }
+      },
+      "default": false
+    },
+    "day_2": {
+      "type": "boolean",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "schedule_type"
+            },
+            "weekly"
+          ]
+        }
+      },
+      "default": false
+    },
+    "day_3": {
+      "type": "boolean",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "schedule_type"
+            },
+            "weekly"
+          ]
+        }
+      },
+      "default": false
+    },
+    "day_4": {
+      "type": "boolean",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "schedule_type"
+            },
+            "weekly"
+          ]
+        }
+      },
+      "default": false
+    },
+    "day_5": {
+      "type": "boolean",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "schedule_type"
+            },
+            "weekly"
+          ]
+        }
+      },
+      "default": false
+    },
+    "day_6": {
+      "type": "boolean",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "schedule_type"
+            },
+            "weekly"
+          ]
+        }
+      },
+      "default": false
+    },
+    "day_7": {
+      "type": "boolean",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "schedule_type"
+            },
+            "weekly"
+          ]
+        }
+      },
+      "default": false
+    },
+    "effective_date": {
+      "type": "date"
+    },
+    "expiry_date": {
+      "type": "date"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "enumeration",
+      "default": "BYN",
+      "enum": [
+        "PLN",
+        "EUR",
+        "USD",
+        "BYN",
+        "GEL"
+      ]
+    }
+  }
+}

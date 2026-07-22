@@ -104,6 +104,12 @@
       "relation": "oneToMany",
       "target": "api::post.post",
       "mappedBy": "page"
+    },
+    "schedules": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour-schedule.tour-schedule",
+      "mappedBy": "page"
     }
   }
 }
