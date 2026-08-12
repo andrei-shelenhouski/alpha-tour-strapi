@@ -831,6 +831,48 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLeadLead extends Struct.CollectionTypeSchema {
+  collectionName: 'leads';
+  info: {
+    displayName: 'Lead';
+    pluralName: 'leads';
+    singularName: 'lead';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    adults: Schema.Attribute.Integer;
+    children: Schema.Attribute.Integer;
+    comment: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    departure: Schema.Attribute.String;
+    destination: Schema.Attribute.String;
+    email: Schema.Attribute.String;
+    hotel: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::lead.lead'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    navio_error: Schema.Attribute.Text;
+    navio_synced: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    range_end: Schema.Attribute.Date;
+    range_start: Schema.Attribute.Date;
+    reference: Schema.Attribute.Text;
+    status: Schema.Attribute.Enumeration<
+      ['new', 'in_progress', 'pending', 'done', 'canceled']
+    > &
+      Schema.Attribute.DefaultTo<'new'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMealTypeMealType extends Struct.CollectionTypeSchema {
   collectionName: 'meal_types';
   info: {
@@ -1063,6 +1105,37 @@ export interface ApiRoomTypeRoomType extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSubscriptionSubscription
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'subscriptions';
+  info: {
+    displayName: 'Subscription';
+    pluralName: 'subscriptions';
+    singularName: 'subscription';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subscription.subscription'
+    > &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1988,12 +2061,14 @@ declare module '@strapi/strapi' {
       'api::currency.currency': ApiCurrencyCurrency;
       'api::flight.flight': ApiFlightFlight;
       'api::hotel.hotel': ApiHotelHotel;
+      'api::lead.lead': ApiLeadLead;
       'api::meal-type.meal-type': ApiMealTypeMealType;
       'api::place.place': ApiPlacePlace;
       'api::post.post': ApiPostPost;
       'api::provider.provider': ApiProviderProvider;
       'api::room-category.room-category': ApiRoomCategoryRoomCategory;
       'api::room-type.room-type': ApiRoomTypeRoomType;
+      'api::subscription.subscription': ApiSubscriptionSubscription;
       'api::tour-schedule.tour-schedule': ApiTourScheduleTourSchedule;
       'api::tour-type.tour-type': ApiTourTypeTourType;
       'api::tour.tour': ApiTourTour;

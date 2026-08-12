@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads",
+  "info": {
+    "singularName": "lead",
+    "pluralName": "leads",
+    "displayName": "Lead"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "departure": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "hotel": {
+      "type": "string"
+    },
+    "range_start": {
+      "type": "date"
+    },
+    "range_end": {
+      "type": "date"
+    },
+    "adults": {
+      "type": "integer"
+    },
+    "children": {
+      "type": "integer"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "reference": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "new",
+        "in_progress",
+        "pending",
+        "done",
+        "canceled"
+      ],
+      "default": "new"
+    },
+    "navio_synced": {
+      "type": "boolean",
+      "default": false
+    },
+    "navio_error": {
+      "type": "text"
+    }
+  }
+}
