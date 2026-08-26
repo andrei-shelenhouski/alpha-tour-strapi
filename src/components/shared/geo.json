@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_geos",
+  "info": {
+    "displayName": "geo",
+    "icon": "pinMap",
+    "description": "Geo coordinates for schema.org GeoCoordinates"
+  },
+  "options": {},
+  "attributes": {
+    "latitude": {
+      "type": "decimal",
+      "required": true
+    },
+    "longitude": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

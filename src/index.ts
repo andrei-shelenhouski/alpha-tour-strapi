@@ -5,6 +5,7 @@ import type { Core } from '@strapi/strapi';
 // the frontend's strapi.const.ts for the source of truth.
 const PUBLIC_READ_CONTENT_TYPES = [
   'api::airport.airport',
+  'api::author.author',
   'api::category.category',
   'api::config.config',
   'api::hotel.hotel',
