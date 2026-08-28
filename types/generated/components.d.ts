@@ -33,7 +33,7 @@ export interface GlobalNavigationPanel extends Struct.ComponentSchema {
     icon: 'grid';
   };
   attributes: {
-    icon: Schema.Attribute.String;
+    icon: Schema.Attribute.String & Schema.Attribute.DefaultTo<'folder'>;
     link: Schema.Attribute.Component<'shared.link', false>;
     links: Schema.Attribute.Component<'shared.link', true>;
     pushes: Schema.Attribute.Component<'global.navigation-push', true>;
@@ -304,6 +304,23 @@ export interface SlicesHero extends Struct.ComponentSchema {
   };
 }
 
+export interface SlicesImageCard extends Struct.ComponentSchema {
+  collectionName: 'components_slices_image_cards';
+  info: {
+    description: 'Card with an image, title, subtitle and a rich-text / markdown body';
+    displayName: 'imageCard';
+    icon: 'picture';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images'>;
+    imagePosition: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.DefaultTo<'left'>;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SlicesInfoBlock extends Struct.ComponentSchema {
   collectionName: 'components_slices_info_blocks';
   info: {
@@ -421,6 +438,7 @@ declare module '@strapi/strapi' {
       'slices.bestsellers': SlicesBestsellers;
       'slices.flexible-blocks': SlicesFlexibleBlocks;
       'slices.hero': SlicesHero;
+      'slices.image-card': SlicesImageCard;
       'slices.info-block': SlicesInfoBlock;
       'slices.markdown': SlicesMarkdown;
       'slices.mosaic': SlicesMosaic;

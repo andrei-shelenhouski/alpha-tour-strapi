@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_slices_image_cards",
+  "info": {
+    "displayName": "imageCard",
+    "icon": "picture",
+    "description": "Card with an image, title, subtitle and a rich-text / markdown body"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "left"
+    }
+  }
+}
