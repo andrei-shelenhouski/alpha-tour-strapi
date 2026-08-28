@@ -93,6 +93,11 @@
       "relation": "oneToMany",
       "target": "api::post.post",
       "mappedBy": "hotel"
+    },
+    "faq": {
+      "type": "component",
+      "component": "shared.faq",
+      "repeatable": true
     }
   }
 }

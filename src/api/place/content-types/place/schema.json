@@ -23,6 +23,14 @@
         }
       }
     },
+    "h1": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "country": {
       "type": "customField",
       "pluginOptions": {
@@ -31,6 +39,26 @@
         }
       },
       "customField": "plugin::country-select.country"
+    },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "faq": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.faq",
+      "repeatable": true
     },
     "tours": {
       "type": "relation",

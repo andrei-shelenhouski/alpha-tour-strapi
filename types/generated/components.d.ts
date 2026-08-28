@@ -144,6 +144,32 @@ export interface SharedEdito extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedFaq extends Struct.ComponentSchema {
+  collectionName: 'components_shared_faqs';
+  info: {
+    description: 'Frequently asked question / answer pair, rendered as FAQPage JSON-LD on the frontend';
+    displayName: 'faq';
+    icon: 'question';
+  };
+  attributes: {
+    answer: Schema.Attribute.RichText & Schema.Attribute.Required;
+    question: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedGeo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_geos';
+  info: {
+    description: 'Geo coordinates for schema.org GeoCoordinates';
+    displayName: 'geo';
+    icon: 'pinMap';
+  };
+  attributes: {
+    latitude: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    longitude: Schema.Attribute.Decimal & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedLink extends Struct.ComponentSchema {
   collectionName: 'components_shared_links';
   info: {
@@ -195,6 +221,31 @@ export interface SharedMetaSocial extends Struct.ComponentSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 60;
       }>;
+  };
+}
+
+export interface SharedOpeningHours extends Struct.ComponentSchema {
+  collectionName: 'components_shared_opening_hours';
+  info: {
+    description: 'One opening-hours row for schema.org OpeningHoursSpecification';
+    displayName: 'openingHours';
+    icon: 'clock';
+  };
+  attributes: {
+    closes: Schema.Attribute.Time & Schema.Attribute.Required;
+    dayOfWeek: Schema.Attribute.Enumeration<
+      [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ]
+    > &
+      Schema.Attribute.Required;
+    opens: Schema.Attribute.Time & Schema.Attribute.Required;
   };
 }
 
@@ -360,9 +411,12 @@ declare module '@strapi/strapi' {
       'shared.button': SharedButton;
       'shared.card': SharedCard;
       'shared.edito': SharedEdito;
+      'shared.faq': SharedFaq;
+      'shared.geo': SharedGeo;
       'shared.link': SharedLink;
       'shared.list-item': SharedListItem;
       'shared.meta-social': SharedMetaSocial;
+      'shared.opening-hours': SharedOpeningHours;
       'shared.seo': SharedSeo;
       'slices.bestsellers': SlicesBestsellers;
       'slices.flexible-blocks': SlicesFlexibleBlocks;

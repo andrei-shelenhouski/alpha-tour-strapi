@@ -24,7 +24,7 @@
       }
     },
     "description": {
-      "type": "boolean",
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true

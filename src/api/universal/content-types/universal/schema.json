@@ -24,6 +24,14 @@
         }
       }
     },
+    "h1": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "slug": {
       "type": "uid",
       "targetField": "title"
@@ -82,6 +90,16 @@
       },
       "component": "shared.seo",
       "repeatable": false
+    },
+    "faq": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.faq",
+      "repeatable": true
     },
     "showCallRequestForm": {
       "type": "boolean",

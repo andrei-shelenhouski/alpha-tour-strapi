@@ -215,6 +215,34 @@
       "component": "shared.link",
       "repeatable": false
     },
+    "email": {
+      "type": "email",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "geo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "shared.geo",
+      "repeatable": false
+    },
+    "openingHours": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "shared.opening-hours",
+      "repeatable": true
+    },
     "showAssociation": {
       "type": "boolean",
       "pluginOptions": {

@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_shared_opening_hours",
+  "info": {
+    "displayName": "openingHours",
+    "icon": "clock",
+    "description": "One opening-hours row for schema.org OpeningHoursSpecification"
+  },
+  "options": {},
+  "attributes": {
+    "dayOfWeek": {
+      "type": "enumeration",
+      "enum": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "required": true
+    },
+    "opens": {
+      "type": "time",
+      "required": true
+    },
+    "closes": {
+      "type": "time",
+      "required": true
+    }
+  }
+}

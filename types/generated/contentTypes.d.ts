@@ -507,6 +507,40 @@ export interface ApiAirportAirport extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
+  collectionName: 'authors';
+  info: {
+    description: 'Article author for E-E-A-T (byline, bio, photo) \u2014 rendered into Article/BlogPosting JSON-LD';
+    displayName: 'Author';
+    pluralName: 'authors';
+    singularName: 'author';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bio: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::author.author'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    photo: Schema.Attribute.Media<'images'>;
+    posts: Schema.Attribute.Relation<'oneToMany', 'api::post.post'>;
+    publishedAt: Schema.Attribute.DateTime;
+    role: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -586,6 +620,12 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'alphatour.by'>;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     facebookProfileLink: Schema.Attribute.Component<'shared.link', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -602,6 +642,12 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    geo: Schema.Attribute.Component<'shared.geo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     instagramProfileLink: Schema.Attribute.Component<'shared.link', false> &
@@ -624,6 +670,12 @@ export interface ApiConfigConfig extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    openingHours: Schema.Attribute.Component<'shared.opening-hours', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     phoneNumber: Schema.Attribute.String &
@@ -809,6 +861,7 @@ export interface ApiHotelHotel extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     externalId: Schema.Attribute.String;
     externalSource: Schema.Attribute.String;
+    faq: Schema.Attribute.Component<'shared.faq', true>;
     gallery: Schema.Attribute.Media<'images', true>;
     isAdultsOnly: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     isDelux: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -944,6 +997,18 @@ export interface ApiPlacePlace extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    faq: Schema.Attribute.Component<'shared.faq', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    h1: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::place.place'>;
     name: Schema.Attribute.String &
@@ -953,6 +1018,12 @@ export interface ApiPlacePlace extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     tours: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -976,6 +1047,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     configs: Schema.Attribute.Relation<'manyToMany', 'api::config.config'>;
     content: Schema.Attribute.RichText;
     country: Schema.Attribute.String &
@@ -983,11 +1055,13 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    faq: Schema.Attribute.Component<'shared.faq', true>;
     hotel: Schema.Attribute.Relation<'manyToOne', 'api::hotel.hotel'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'>;
     page: Schema.Attribute.Relation<'manyToOne', 'api::universal.universal'>;
     publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
     thumbnail: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1090,7 +1164,7 @@ export interface ApiRoomTypeRoomType extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Boolean &
+    description: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1487,6 +1561,18 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    faq: Schema.Attribute.Component<'shared.faq', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    h1: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     hotel: Schema.Attribute.Relation<'manyToOne', 'api::hotel.hotel'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
@@ -2057,6 +2143,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::airport.airport': ApiAirportAirport;
+      'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::config.config': ApiConfigConfig;
       'api::currency.currency': ApiCurrencyCurrency;
