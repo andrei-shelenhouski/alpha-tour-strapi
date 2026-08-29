@@ -1574,6 +1574,13 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
         };
       }>;
     hotel: Schema.Attribute.Relation<'manyToOne', 'api::hotel.hotel'>;
+    isExotic: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

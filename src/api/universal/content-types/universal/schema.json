@@ -61,6 +61,15 @@
       },
       "customField": "plugin::country-select.country"
     },
+    "isExotic": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": false
+    },
     "slices": {
       "type": "dynamiczone",
       "pluginOptions": {
