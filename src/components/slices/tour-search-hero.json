@@ -18,6 +18,22 @@
     },
     "subheading": {
       "type": "string"
+    },
+    "showTourSearch": {
+      "type": "boolean",
+      "default": true
+    },
+    "showExcursionSearch": {
+      "type": "boolean",
+      "default": true
+    },
+    "onlyListedCountries": {
+      "type": "boolean",
+      "default": true
+    },
+    "defaultCountry": {
+      "type": "customField",
+      "customField": "plugin::country-select.country"
     }
   }
 }

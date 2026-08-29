@@ -423,8 +423,15 @@ export interface SlicesTourSearchHero extends Struct.ComponentSchema {
     icon: 'search';
   };
   attributes: {
+    defaultCountry: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::country-select.country'>;
     heading: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
+    onlyListedCountries: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    showExcursionSearch: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    showTourSearch: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     subheading: Schema.Attribute.String;
   };
 }
