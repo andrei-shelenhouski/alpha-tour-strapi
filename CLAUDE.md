@@ -31,14 +31,14 @@ src/api/<name>/
   routes/<name>.ts                   # factories.createCoreRouter — all currently default
   services/<name>.ts                 # factories.createCoreService — all currently default
 ```
-No content type currently has custom controller/route/service logic — everything relies on Strapi's generated CRUD. When adding business logic, extend the relevant factory in `controllers|services/<name>.ts` rather than editing schema.json to add behavior.
+Most content types rely on Strapi's generated CRUD. The exceptions with custom controller logic: `tour` (overrides `find` to resolve the `filters[exoticCountry]=true` flag into a `country $in <exotic country codes>` constraint), `currency` (custom `GET /currency-rates` route + handler), `lead` and `subscription` (honeypot check in `create`). When adding business logic, extend the relevant factory in `controllers|services/<name>.ts` rather than editing schema.json to add behavior.
 
 ### Domain model
 
 The core entity graph:
 - **`universal`** ("Page") is the generic CMS page type — has a `dynamiczone` of `slices.*` components (hero, mosaic, slider, promotions, tourvisor, etc.), an SEO component, and relations to `config`, `category`, and `hotel`. Pages are the composable building block for most frontend routes.
 - **`config`** is a per-domain site configuration singleton-like collection (keyed by `domain`, e.g. `alphatour.by`) holding navigation, footer, feature toggles (`showPhoneNumber`, `showSubscriptionForm`, `showInternetAcquiring`, etc.) with conditional-visibility fields tied to those booleans (`conditions.visible` JSON-logic in the schema).
-- **`tour`** is the central booking/product entity: relations to `place`, `transport_type`, `departure_airport`, `meal_type`, `room_type`, `room_category`, `provider` (private), `config`, and `page` (a `universal`). Carries pricing (`price`, `currency` enum, `exchange_rate_multiplier`), dates, and a `service_note` marked `private` (never exposed over the public API).
+- **`tour`** is the central booking/product entity: relations to `place`, `transport_type`, `departure_airport`, `meal_type`, `room_type`, `room_category`, `provider` (private), `config`, and `page` (a `universal`). Carries pricing (`price`, `currency` enum, `exchange_rate_multiplier`), dates, a `service_note` marked `private` (never exposed over the public API), and marketing-segment flags `isHot` / `isEarlyBooking` (surfaced on the frontend as `/hot-tours` and `/early-booking-tours`).
 - **`hotel`** relates to `place`, has `pages` (one-to-many `universal`) and `posts`.
 - **`post`** (blog/content) relates to `page`, `hotel`, and many-to-many `configs`.
 - Reference/lookup collection types: `place`, `airport`, `category`, `currency`, `meal-type`, `room-type`, `room-category`, `transport-type`, `tour-type`, `provider`.
