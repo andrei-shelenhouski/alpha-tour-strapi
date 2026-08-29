@@ -27,6 +27,10 @@
       "type": "boolean",
       "default": true
     },
+    "showQuickFilters": {
+      "type": "boolean",
+      "default": false
+    },
     "onlyListedCountries": {
       "type": "boolean",
       "default": true

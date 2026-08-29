@@ -431,6 +431,8 @@ export interface SlicesTourSearchHero extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<true>;
     showExcursionSearch: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<true>;
+    showQuickFilters: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     showTourSearch: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     subheading: Schema.Attribute.String;
   };
