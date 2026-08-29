@@ -218,6 +218,24 @@
       "relation": "oneToOne",
       "target": "api::provider.provider",
       "private": true
+    },
+    "isHot": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": false
+    },
+    "isEarlyBooking": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": false
     }
   }
 }

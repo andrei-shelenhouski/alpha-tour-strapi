@@ -1410,6 +1410,20 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    isEarlyBooking: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    isHot: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tour.tour'>;
     meal_type: Schema.Attribute.Relation<
