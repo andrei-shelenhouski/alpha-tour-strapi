@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_slices_tour_search_heroes",
+  "info": {
+    "displayName": "tour-search-hero",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "string"
+    }
+  }
+}

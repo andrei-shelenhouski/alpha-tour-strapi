@@ -1600,6 +1600,7 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
       Schema.Attribute.DefaultTo<true>;
     slices: Schema.Attribute.DynamicZone<
       [
+        'slices.tour-search-hero',
         'slices.hero',
         'slices.title-with-three-articles',
         'slices.mosaic',

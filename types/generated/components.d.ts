@@ -416,6 +416,19 @@ export interface SlicesTitleWithThreeArticles extends Struct.ComponentSchema {
   };
 }
 
+export interface SlicesTourSearchHero extends Struct.ComponentSchema {
+  collectionName: 'components_slices_tour_search_heroes';
+  info: {
+    displayName: 'tour-search-hero';
+    icon: 'search';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    subheading: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
@@ -446,6 +459,7 @@ declare module '@strapi/strapi' {
       'slices.rich-text': SlicesRichText;
       'slices.slider': SlicesSlider;
       'slices.title-with-three-articles': SlicesTitleWithThreeArticles;
+      'slices.tour-search-hero': SlicesTourSearchHero;
     }
   }
 }
