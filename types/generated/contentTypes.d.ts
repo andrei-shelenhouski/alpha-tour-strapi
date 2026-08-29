@@ -1637,6 +1637,14 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    visaRegime: Schema.Attribute.Enumeration<
+      ['visa_free', 'visa_on_arrival', 'visa_required']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
   };
 }
 

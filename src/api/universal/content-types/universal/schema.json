@@ -70,6 +70,15 @@
       },
       "default": false
     },
+    "visaRegime": {
+      "type": "enumeration",
+      "enum": ["visa_free", "visa_on_arrival", "visa_required"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
     "slices": {
       "type": "dynamiczone",
       "pluginOptions": {
