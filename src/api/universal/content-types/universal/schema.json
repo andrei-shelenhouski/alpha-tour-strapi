@@ -82,16 +82,6 @@
         "slices.flexible-blocks"
       ]
     },
-    "seo": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "shared.seo",
-      "repeatable": false
-    },
     "faq": {
       "type": "component",
       "pluginOptions": {
@@ -101,6 +91,16 @@
       },
       "component": "shared.faq",
       "repeatable": true
+    },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
+      "repeatable": false
     },
     "showCallRequestForm": {
       "type": "boolean",
