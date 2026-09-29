@@ -1633,6 +1633,7 @@ export interface ApiUniversalUniversal extends Struct.CollectionTypeSchema {
         'slices.bestsellers',
         'slices.markdown',
         'slices.flexible-blocks',
+        'slices.video-banner',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

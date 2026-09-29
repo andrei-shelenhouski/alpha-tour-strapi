@@ -397,26 +397,6 @@ export interface SlicesSlider extends Struct.ComponentSchema {
   };
 }
 
-export interface SlicesVideoBanner extends Struct.ComponentSchema {
-  collectionName: 'components_slices_video_banners';
-  info: {
-    description: 'Full-width banner with a background video, poster, text and a clickable link';
-    displayName: 'videoBanner';
-    icon: 'play';
-  };
-  attributes: {
-    buttonLabel: Schema.Attribute.String;
-    eyebrow: Schema.Attribute.String;
-    link: Schema.Attribute.Component<'shared.link', false>;
-    poster: Schema.Attribute.Media<'images'>;
-    posterMobile: Schema.Attribute.Media<'images'>;
-    text: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
-    video: Schema.Attribute.Media<'videos'>;
-    videoMobile: Schema.Attribute.Media<'videos'>;
-  };
-}
-
 export interface SlicesTitleWithThreeArticles extends Struct.ComponentSchema {
   collectionName: 'components_slices_title_with_three_articles';
   info: {
@@ -457,6 +437,26 @@ export interface SlicesTourSearchHero extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<false>;
     showTourSearch: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     subheading: Schema.Attribute.String;
+  };
+}
+
+export interface SlicesVideoBanner extends Struct.ComponentSchema {
+  collectionName: 'components_slices_video_banners';
+  info: {
+    description: 'Full-width banner with a background video, poster, text and a clickable link';
+    displayName: 'videoBanner';
+    icon: 'play';
+  };
+  attributes: {
+    buttonLabel: Schema.Attribute.String;
+    eyebrow: Schema.Attribute.String;
+    link: Schema.Attribute.Component<'shared.link', false>;
+    poster: Schema.Attribute.Media<'images'>;
+    posterMobile: Schema.Attribute.Media<'images'>;
+    text: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+    video: Schema.Attribute.Media<'videos'>;
+    videoMobile: Schema.Attribute.Media<'videos'>;
   };
 }
 
