@@ -98,7 +98,8 @@
         "slices.promotions",
         "slices.bestsellers",
         "slices.markdown",
-        "slices.flexible-blocks"
+        "slices.flexible-blocks",
+        "slices.video-banner"
       ]
     },
     "faq": {
