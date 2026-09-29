@@ -429,6 +429,8 @@ export interface SlicesTourSearchHero extends Struct.ComponentSchema {
     image: Schema.Attribute.Media<'images'>;
     onlyListedCountries: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<true>;
+    showCruiseSearch: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
     showExcursionSearch: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<true>;
     showQuickFilters: Schema.Attribute.Boolean &
